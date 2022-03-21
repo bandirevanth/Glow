@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap&text=HOVER%20ME");
+
+button {
+  all: unset;
+
+  // Text
+  color: #712f9d;
+  font: 700 1.125rem/1.2 Raleway, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+
+  // Button sizing
+  padding: 0.85em;
+  max-width: 100%;
+  width: 12em;
+
+  // Button styling
+  background: inherit;
+  background-clip: padding-box;
+  border: 5px solid #712f9d;
+  border-radius: 2em;
+  cursor: pointer;
+
+  // Effects
+  position: relative;
+  transition: 0.25s ease-out;
+
+  // Set up pseudo elements
+  &::before,
+  &::after {
+    content: "";
+    border-radius: inherit;
+    transition: inherit;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  // Gradient shadow
+  &::before {
+    // Position
+    inset: -0.2em;
+    z-index: -1;
+
+    // Effect
+    background: linear-gradient(#fff26f, #a80cf1);
+    filter: blur(1.2em);
+
+    // Animation
+    transform-origin: bottom;
+    transform: scaleY(0.5);
+    opacity: 0;
+  }
+
+  // Semi-transparent border
+  &::after {
+    // Effect
+    box-shadow: inset 0 0 0 1px #fff, 0 0 0 4px rgba(255, 255, 255, 0.7),
+      0 0 0 5px #fff;
+    mix-blend-mode: overlay;
+
+    // Animation
+
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus {
+    color: #f5c2ed;
+
+    // Lighten border
+    border-color: rgba(179, 73, 245, 0.1);
+
+    // Inner shadow
+    box-shadow: inset 0 1.4em 0 rgba(179, 73, 245, 0.1),
+      inset 0 0 1.4em rgba(179, 73, 245, 0.32), 0 1px 1px #250f3347;
+
+    // Show effects
+    &::before,
+    &::after {
+      transform: none;
+      opacity: 1;
+    }
+  }
+}
+
+// Pen styling, ignore
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+
+body,
+.container {
+  background: #250f33;
+}
+
+.container {
+  padding: 3em;
+  position: relative;
+  z-index: 1;
+}
